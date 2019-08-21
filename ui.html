@@ -1,0 +1,56 @@
+
+<style>
+  #iconWrap a{
+    display: inline-block;
+    padding: 10px;
+  }
+
+  #iconWrap a:hover{
+    background: red;
+  }
+
+</style>
+
+<h2>Export seleciton</h2>
+<p>
+  <select id="type">
+    <option value="SVG">SVG</option>
+    <option value="PNG">PNG</option>
+    <option value="JPG">JPG</option>
+    <option value="PDF">PDF</option>
+  </select>
+</p>
+<button id="create">Create</button>
+<button id="cancel">Cancel</button>
+
+<h3>选中的Icon</h3>
+
+<div id="iconWrap"></div>
+
+
+<script>
+  const _iconWrap=document.getElementById('iconWrap');
+
+  document.getElementById('create').onclick = () => {
+    const type = document.getElementById('type');
+    const format = type.value;
+    _iconWrap.innerHTML='';
+    parent.postMessage({ pluginMessage: { type: 'export-selection', format } }, '*')
+  }
+
+  document.getElementById('cancel').onclick = () => {
+    parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  }
+  onmessage = (event) => {
+    const res = event.data.pluginMessage;
+    const fileString = String.fromCharCode.apply(null, res.data);
+    const img = document.createElement('img');
+    const link = document.createElement('a');
+    const srcSting = 'data:image/svg+xml;utf8,' + fileString;
+    img.src = srcSting;
+    link.href = srcSting;
+    link.download = res.name+'.svg';
+    link.appendChild(img);
+    _iconWrap.appendChild(link);
+  }
+</script>
