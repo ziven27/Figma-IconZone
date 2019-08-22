@@ -1,7 +1,6 @@
 {
-  "name": "hello",
+  "name": "Icon Zone",
   "id": "739711077384375064",
   "api": "1.0.0",
-  "main": "code.js",
-  "ui": "ui.html"
+  "main": "code.js"
 }
