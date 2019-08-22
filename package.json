@@ -1,0 +1,10 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "code.js",
+  "author": "ziven27",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
