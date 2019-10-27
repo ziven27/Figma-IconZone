@@ -1,4 +1,4 @@
-## Icon zone
+# Icon zone
 
 Icon Zone helps create a square slice around your icons what is perfect center of the vectors or the group you selected. At the same times the slice will be ready to export as SVGs .
 
